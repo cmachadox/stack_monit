@@ -20,7 +20,7 @@ services:
           - node.role == manager
       resources:
         limits:
-          memory: 2048M
+          memory: 1024M
         reservations:
           memory: 512M
 
@@ -41,19 +41,19 @@ services:
       mode: global
 
 
-  alertmanager:
-    image: prom/alertmanager
-    ports:
-      - 9093:9093
-    volumes:
-      - ./prometheus/alertmanager/:/etc/alertmanager/
-    command:
-      - '--config.file=/etc/alertmanager/config.yml'
-      - '--storage.path=/alertmanager'
-    deploy:
-      placement:
-        constraints:
-           - node.role==manager
+  #alertmanager:
+  #  image: prom/alertmanager
+  # ports:
+  #    - 9093:9093
+  #  volumes:
+  #    - ./prometheus/alertmanager/:/etc/alertmanager/
+  #  command:
+  #    - '--config.file=/etc/alertmanager/config.yml'
+  #    - '--storage.path=/alertmanager'
+  #  deploy:
+  #    placement:
+  #      constraints:
+  #         - node.role==manager
 
   grafana:
     image: grafana/grafana
@@ -74,19 +74,19 @@ services:
         constraints:
           - node.role == manager
 
-  cadvisor:
-    image: google/cadvisor
-    hostname: cadvisor
-    volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:rw
-      - /sys:/sys:ro
-      - /var/lib/docker/:/var/lib/docker:ro
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    deploy:
-      mode: global
-    ports:
-      - 8081:8080
+  #cadvisor:
+  #  image: google/cadvisor
+  #  hostname: cadvisor
+  #  volumes:
+  #    - /:/rootfs:ro
+  #    - /var/run:/var/run:rw
+  #    - /sys:/sys:ro
+  #    - /var/lib/docker/:/var/lib/docker:ro
+  #    - /var/run/docker.sock:/var/run/docker.sock:ro
+  #  deploy:
+  #    mode: global
+  #  ports:
+  #    - 8081:8080
 
   
 #  prometheus-bot:
