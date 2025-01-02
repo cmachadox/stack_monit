@@ -29,7 +29,8 @@ scrape_configs:
          - targets: ['192.168.0.185:9100'] # adicione o ip onde foi criado o serviço
 
   
-  - job_name: 'cadvisor'
-    scrape_interval: 15s
-    static_configs:
-         - targets: ['192.168.0.185:8081'] # adicione o ip onde foi criado o serviço
+  #- job_name: 'cadvisor'
+  #  scrape_interval: 15s
+  #  static_configs:
+  #       - targets: ['192.168.0.185:8081'] # adicione o ip onde foi criado o serviço
+#--------------------------------------------------------------------------------------------
